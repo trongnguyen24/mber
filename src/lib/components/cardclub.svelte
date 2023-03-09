@@ -21,34 +21,34 @@
 		</h2>
 		<div class="flex flex-col gap-2">
 			<div
-				class="flex items-center overflow-hidden text-xs h-6 border divide-x rounded divide-sky-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-sky-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
 				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Dev</div>
-				<div class="max-w-full pl-2 whitespace-nowrap h-6 leading-6 text-slate-400">
+				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
 					{dev}
 				</div>
 			</div>
 			<div
-				class="flex items-center overflow-hidden text-xs h-6 border divide-x divide-purple-500 rounded font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x divide-purple-500 rounded font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
 				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Test</div>
-				<div class="max-w-full pl-2 whitespace-nowrap h-6 leading-6 text-slate-400">
+				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
 					{test}
 				</div>
 			</div>
 			<div
-				class="flex items-center overflow-hidden text-xs h-6 border divide-x rounded divide-emerald-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-emerald-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
 				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Uat</div>
-				<div class="max-w-full pl-2 whitespace-nowrap h-6 leading-6 text-slate-400">
+				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
 					{uat}
 				</div>
 			</div>
 			<div
-				class="flex items-center overflow-hidden text-xs h-6 border divide-x rounded divide-lime-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-lime-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
 				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Live</div>
-				<div class="max-w-full pl-2 whitespace-nowrap h-6 leading-6 text-slate-400">
+				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
 					{live}
 				</div>
 			</div>

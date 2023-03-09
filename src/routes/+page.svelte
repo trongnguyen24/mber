@@ -74,11 +74,18 @@
 							</div>
 						{/each}
 					</div>
-				</div></Transition
-			>
+				</div>
+			</Transition>
 		</div>
 	</div>
 	<main class="grid grid-cols-4 gap-10 mt-11">
-		<Cardclub name="club" img={logo} dev="aaaa" test="bbb" uat="cc" live="dd" />
+		<Cardclub
+			name="Brumbies Rugby"
+			img={logo}
+			dev="brumbiesrugby-dev.tpfonline.com.au"
+			test="brumbiesrugby-test.tpfonline.com.au"
+			uat="brumbiesrugby-uat.mberplus.com.au"
+			live="brumbiesrugby.mberplus.com.au"
+		/>
 	</main>
 </section>
