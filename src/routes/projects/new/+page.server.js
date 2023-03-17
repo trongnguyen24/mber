@@ -1,4 +1,5 @@
 import { redirect } from '@sveltejs/kit';
+import clubs from '$lib/Store.js';
 
 export const load = ({ locals }) => {
 	if (!locals.pb.authStore.isValid) {
@@ -22,7 +23,6 @@ export const actions = {
 			console.log('Error: ', err);
 			throw error(err.status, err.message);
 		}
-
 		throw redirect(303, '/');
 	}
 };

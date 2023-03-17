@@ -230,6 +230,7 @@
 							class="p-6 overflow-hidden text-left align-middle transition-all transform border-t rounded-lg shadow-xl w-52 bg-slate-100 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
 							use:dialogmenu.modal
 						>
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
 							<ul on:click={dialogmenu.close} class="flex flex-col gap-6">
 								<Menu />
 							</ul>

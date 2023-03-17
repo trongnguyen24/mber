@@ -6,7 +6,7 @@
 
 	let clubscache;
 	clubs.subscribe((data) => {
-		clubscache = data;
+		clubscache = data.items;
 	});
 
 	const sortmenu = createMenu({ label: 'sortmenu' });
@@ -84,7 +84,7 @@
 		</div>
 	</div>
 	<main class="grid grid-cols-4 gap-10 mt-11">
-		{#each clubscache.items as club}
+		{#each clubscache as club}
 			<Cardclub {club} />
 		{/each}
 	</main>

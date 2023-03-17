@@ -14,7 +14,7 @@
 		>
 			<h3 class="text-3xl font-bold">Tell us more about this project</h3>
 			<p class="mt-2 text-lg">We'll need the name, tagline, link, and description</p>
-			<Input id="club" label="Club name" />
+			<Input id="name" label="Club name" />
 			<Input id="shortname" label="Short name" />
 			<Input id="dev" label="Dev URL" />
 			<Input id="test" label="Test URL" />
