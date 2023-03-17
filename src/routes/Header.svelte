@@ -14,10 +14,9 @@
 <svelte:window bind:scrollY={scrolly} />
 <header class="relative z-20">
 	<nav
-		class="fixed w-full {scrolly > 40
+		class="fixed w-full transition-colors duration-300 {scrolly > 40
 			? 'backdrop-blur-lg border-b bg-white/90 border-b-slate-500/10 dark:bg-zinc-900/90'
 			: 'backdrop-blur-none border-b bg-white/30 border-b-slate-500/10 dark:bg-zinc-900/20'}
-			{scrolly >= 0 ? 'transition-all duration-300' : ''}
 			"
 	>
 		<!-- Mobile header -->
@@ -188,7 +187,7 @@
 							stroke-linejoin="round"
 						/>
 					</svg>
-					Quick search project {scrolly}
+					Quick search project
 				</button>
 			</div>
 			<div class="flex gap-8 divide-x dark:divide-slate-800">

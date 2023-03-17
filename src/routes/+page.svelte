@@ -5,8 +5,8 @@
 	import clubs from '$lib/Store.js';
 
 	let clubscache;
-	clubs.subscribe((data) => {
-		clubscache = data.items;
+	clubs.subscribe((dataclub) => {
+		clubscache = dataclub.items;
 	});
 
 	const sortmenu = createMenu({ label: 'sortmenu' });

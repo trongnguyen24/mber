@@ -84,23 +84,65 @@
 			"name": "Gold Coast SUNS",
 			"shortname": "GCS",
 			"test": "goldcoastsuns-test.tpfonline.com.au",
-			"thumbnail": "suns_vmxmpcd2K6.png",
+			"thumbnail": "suns_DC1JMR3bTQ.png",
 			"uat": "goldcoastsuns-uat.mberplus.com.au",
-			"updated": "2023-03-03 06:18:59.188Z"
+			"updated": "2023-03-17 08:14:24.023Z"
 		},
 		{
 			"collectionId": "tvi7fuufximvbbo",
 			"collectionName": "club",
-			"created": "2023-03-15 08:35:10.078Z",
+			"created": "2023-03-17 07:22:47.587Z",
 			"dev": "ccmariners-dev.tpfonline.com.au",
-			"id": "gdyjhragpk0bkd8",
+			"id": "ukmx2iq6i0kyvfv",
 			"live": "ccmariners.mberplus.com.au",
 			"name": "Central Coast Mariners",
 			"shortname": "CCM",
 			"test": "ccmariners-test.tpfonline.com.au",
-			"thumbnail": "ccm_ohkzKcGSxH.png",
+			"thumbnail": "ccm_Ynds0qzjy8.png",
 			"uat": "ccmariners-uat.mberplus.com.au",
-			"updated": "2023-03-15 08:35:10.078Z"
+			"updated": "2023-03-17 08:16:39.614Z"
+		},
+		{
+			"collectionId": "tvi7fuufximvbbo",
+			"collectionName": "club",
+			"created": "2023-03-17 08:56:26.971Z",
+			"dev": "ccmariners-dev.tpfonline.com.au",
+			"id": "ntdsscdsk0m1bm5",
+			"live": "ccmariners.mberplus.com.au",
+			"name": "",
+			"shortname": "CCM",
+			"test": "ccmariners-test.tpfonline.com.au",
+			"thumbnail": "bulldogs_7YG0YDXGdy.png",
+			"uat": "ccmariners-uat.mberplus.com.au",
+			"updated": "2023-03-17 08:56:26.971Z"
+		},
+		{
+			"collectionId": "tvi7fuufximvbbo",
+			"collectionName": "club",
+			"created": "2023-03-17 08:57:12.783Z",
+			"dev": "ccmariners-dev.tpfonline.com.au",
+			"id": "n3bykssw6hacnbd",
+			"live": "ccmariners.mberplus.com.au",
+			"name": "",
+			"shortname": "CCM",
+			"test": "ccmariners-test.tpfonline.com.au",
+			"thumbnail": "melbourne_rebels_pLnERv4z1V.png",
+			"uat": "ccmariners-uat.mberplus.com.au",
+			"updated": "2023-03-17 08:57:12.783Z"
+		},
+		{
+			"collectionId": "tvi7fuufximvbbo",
+			"collectionName": "club",
+			"created": "2023-03-17 09:12:18.134Z",
+			"dev": "http://localhost:5173/",
+			"id": "kfk5ko0kevsq5t8",
+			"live": "http://localhost:5173/",
+			"name": "Lê Trọng Nguyên",
+			"shortname": "ccc",
+			"test": "http://localhost:5173/",
+			"thumbnail": "ava_awzTGo1cIW.svg",
+			"uat": "http://localhost:5173/",
+			"updated": "2023-03-17 09:12:18.134Z"
 		}
 	]
 }

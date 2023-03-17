@@ -42,7 +42,7 @@
 			leaveFrom="opacity-100 rotate-0 scale-100"
 			leaveTo="opacity-0 scale-95"
 		>
-			<button role="button" class="absolute" on:click={toggleTheme}>
+			<button class="absolute" on:click={toggleTheme}>
 				<svg
 					width="24"
 					height="24"
