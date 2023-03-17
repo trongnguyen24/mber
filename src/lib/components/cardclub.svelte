@@ -1,10 +1,7 @@
 <script>
-	export let name;
-	export let img;
-	export let dev;
-	export let test;
-	export let uat;
-	export let live;
+	import { enhance } from '$app/forms';
+	import { getImageURL } from '$lib/utils';
+	export let club;
 </script>
 
 <article
@@ -12,44 +9,53 @@
 >
 	<div class="flex items-center justify-center bg-white h-28 dark:bg-gray-800">
 		<picture class="w-16 h-16">
-			<img src={img} alt="Welcome" />
+			<img
+				src={club?.thumbnail
+					? getImageURL(club.collectionId, club.id, club.thumbnail, '100x100')
+					: `https://via.placeholder.com/80/4506CB/FFFFFF/?text=${club.name}`}
+				alt="club thumbnail"
+				loading="lazy"
+				width="64"
+				height="64"
+				decoding="async"
+			/>
 		</picture>
 	</div>
 	<div class="flex flex-col gap-4 p-6 border-t border-slate-100 dark:border-gray-900">
 		<h2 class="text-lg font-semibold text-center text-slate-600 dark:text-slate-100">
-			{name}
+			{club.name}
 		</h2>
 		<div class="flex flex-col gap-2">
 			<div
 				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-sky-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Dev</div>
+				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Dev</div>
 				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{dev}
+					{club.dev}
 				</div>
 			</div>
 			<div
 				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x divide-purple-500 rounded font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Test</div>
+				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Test</div>
 				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{test}
+					{club.test}
 				</div>
 			</div>
 			<div
 				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-emerald-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Uat</div>
+				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Uat</div>
 				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{uat}
+					{club.uat}
 				</div>
 			</div>
 			<div
 				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-lime-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
 			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100">Live</div>
+				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Live</div>
 				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{live}
+					{club.live}
 				</div>
 			</div>
 		</div>

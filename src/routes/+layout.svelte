@@ -14,17 +14,17 @@
 <div class="flex flex-col min-h-full">
 	<!-- beam background -->
 	<div
-		class="absolute z-10 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none"
+		class="absolute z-10 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none select-none"
 	>
 		<div class="w-[106.25rem] flex-none justify-center">
 			<picture class="hidden dark:block">
 				<source srcset={beam} type="image/webp" />
-				<img src={beam_fallback} alt="Welcome" />
+				<img src={beam_fallback} alt="BG" loading="lazy" />
 			</picture>
 
 			<picture class="block dark:hidden">
 				<source srcset={beam_light} type="image/webp" />
-				<img src={beam_light_fallback} alt="Welcome" />
+				<img src={beam_light_fallback} alt="BG" loading="lazy" />
 			</picture>
 		</div>
 	</div>

@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { createMenu } from 'svelte-headlessui';
 	import Transition from 'svelte-transition';
-	import logo from '$lib/images/logo-club.png?w=64&webp';
-	import Cardclub from '$lib/components/cardclub.svelte';
+	import { Cardclub } from '$lib/components';
+	import clubs from '$lib/Store.js';
+
+	let clubscache;
+	clubs.subscribe((data) => {
+		clubscache = data;
+	});
 
 	const sortmenu = createMenu({ label: 'sortmenu' });
 	function onSelect(e: Event) {
@@ -79,13 +84,8 @@
 		</div>
 	</div>
 	<main class="grid grid-cols-4 gap-10 mt-11">
-		<Cardclub
-			name="Brumbies Rugby"
-			img={logo}
-			dev="brumbiesrugby-dev.tpfonline.com.au"
-			test="brumbiesrugby-test.tpfonline.com.au"
-			uat="brumbiesrugby-uat.mberplus.com.au"
-			live="brumbiesrugby.mberplus.com.au"
-		/>
+		{#each clubscache.items as club}
+			<Cardclub {club} />
+		{/each}
 	</main>
 </section>
