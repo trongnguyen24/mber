@@ -1,7 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { fade } from 'svelte/transition';
 	import { getImageURL } from '$lib/utils';
+	import Transition from 'svelte-transition';
 	export let club;
 </script>
 
@@ -9,7 +9,7 @@
 	class=" bg-[#F6FAFE] overflow-hidden border-l border-t border-white rounded-2xl shadow-3xl dark:bg-[#1D1D23] dark:border-gray-800"
 >
 	<div class="flex items-center justify-center bg-white h-28 dark:bg-gray-800">
-		<picture in:fade class="w-16 h-16">
+		<picture class="w-16 h-16">
 			<img
 				src={club?.thumbnail
 					? getImageURL(club.collectionId, club.id, club.thumbnail, '100x100')
@@ -18,7 +18,6 @@
 				loading="lazy"
 				width="64"
 				height="64"
-				decoding="async"
 			/>
 		</picture>
 	</div>

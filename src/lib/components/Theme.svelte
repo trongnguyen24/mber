@@ -30,7 +30,7 @@
 	}
 </script>
 
-<div class="relative h-6 w-6">
+<div class="relative w-6 h-6">
 	{#if theme.dark}
 		<Transition
 			{show}
@@ -40,7 +40,7 @@
 			enterTo="opacity-100 rotate-0 scale-100"
 			leave="duration-200 transition ease-in-out"
 			leaveFrom="opacity-100 rotate-0 scale-100"
-			leaveTo="opacity-0 scale-95"
+			leaveTo="opacity-0 rotate-[120deg] scale-95"
 		>
 			<button class="absolute" on:click={toggleTheme}>
 				<svg
@@ -76,7 +76,7 @@
 			enterTo="opacity-100 rotate-0 scale-100"
 			leave="duration-200 transition ease-in-out"
 			leaveFrom="opacity-100 rotate-0 scale-100"
-			leaveTo="opacity-0 scale-95"
+			leaveTo="opacity-0  rotate-[120deg] scale-95"
 		>
 			<button class="absolute" on:click={toggleTheme}>
 				<svg

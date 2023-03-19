@@ -1,19 +1,45 @@
 <script lang="ts">
 	import { createMenu } from 'svelte-headlessui';
 	import Transition from 'svelte-transition';
+	import { scale } from 'svelte/transition';
+	import { browser } from '$app/environment';
+
 	import { Cardclub } from '$lib/components';
-	import clubs from '$lib/Store.js';
+	import { clubs, club2s } from '$lib/Store.js';
 
 	let clubscache;
+	let clubscache2;
+	let sortname;
+
 	clubs.subscribe((dataclub) => {
-		clubscache = dataclub.items;
+		clubscache = dataclub;
 	});
+
+	club2s.subscribe((dataclub2) => {
+		clubscache2 = dataclub2;
+	});
+
+	function setnew() {
+		localStorage.setItem('sortname', '0');
+		sortname = 0;
+	}
+	function setname() {
+		localStorage.setItem('sortname', '1');
+		sortname = 1;
+	}
 
 	const sortmenu = createMenu({ label: 'sortmenu' });
 	function onSelect(e: Event) {
 		console.log('select', (e as CustomEvent).detail);
 	}
-	const groups = [[{ text: `Newest` }, { text: `Name A->Z` }]];
+
+	if (browser) {
+		if (localStorage.sortname == 1) {
+			setname();
+		} else {
+			setnew();
+		}
+	}
 </script>
 
 <svelte:head>
@@ -24,7 +50,7 @@
 <section class="container max-w-screen-2xl pt-28">
 	<div class="flex justify-between">
 		<h1 class="text-2xl font-bold text-gray-700 dark:text-gray-300">Mber+® sites url</h1>
-		<div class="relative inline-block">
+		<div class="relative z-10 inline-block">
 			<button
 				use:sortmenu.button
 				on:select={onSelect}
@@ -60,32 +86,50 @@
 			>
 				<div
 					use:sortmenu.items
-					class="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-gray-200 focus:outline-none"
+					class="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-gray-200 focus:outline-none dark:ring-gray-700 dark:bg-gray-800"
 				>
-					<div class="py-1 divide-y divide-gray-100">
-						{#each groups as group}
-							<div class="py-1">
-								{#each group as option}
-									{@const active = $sortmenu.active === option.text}
-									<button
-										use:sortmenu.item
-										class="group flex items-center w-full px-4 py-2 text-sm text-gray-700 {active
-											? 'bg-gray-100'
-											: ''}"
-									>
-										{option.text}
-									</button>
-								{/each}
-							</div>
-						{/each}
+					<div class="py-1">
+						<button
+							use:sortmenu.item
+							on:click={setnew}
+							class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-400 group dark:hover:bg-gray-700 hover:bg-slate-100"
+						>
+							Newest
+						</button>
+						<button
+							use:sortmenu.item
+							on:click={setname}
+							class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-400 group dark:hover:bg-gray-700 hover:bg-slate-100"
+						>
+							Name A->Z
+						</button>
 					</div>
 				</div>
 			</Transition>
 		</div>
 	</div>
-	<main class="grid grid-cols-4 gap-10 mt-11">
-		{#each clubscache as club}
-			<Cardclub {club} />
-		{/each}
-	</main>
+	<div class="relative">
+		{#if sortname === 0}
+			<main
+				in:scale={{ duration: 700, delay: 200, opacity: 0, start: 0.97 }}
+				out:scale={{ duration: 250, delay: 0, opacity: 0, start: 1.01 }}
+				class="grid absolute w-full gap-10 my-11 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))]"
+			>
+				{#each clubscache as club}
+					<Cardclub {club} />
+				{/each}
+			</main>
+		{/if}
+		{#if sortname === 1}
+			<main
+				in:scale={{ duration: 700, delay: 200, opacity: 0, start: 0.97 }}
+				out:scale={{ duration: 250, delay: 0, opacity: 0, start: 1.01 }}
+				class="grid absolute w-full gap-10 my-11 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))]"
+			>
+				{#each clubscache2 as club}
+					<Cardclub {club} />
+				{/each}
+			</main>
+		{/if}
+	</div>
 </section>

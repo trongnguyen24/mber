@@ -10,5 +10,5 @@ export const generateUsername = (name) => {
 };
 
 export const getImageURL = (collectionId, recordId, fileName, size = '0x0') => {
-	return `https://lazy-traffic.pockethost.io/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
+	return `http://127.0.0.1:8090/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
 };

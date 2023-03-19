@@ -169,7 +169,7 @@
 					/>
 				</svg>
 				<button
-					class="flex w-full max-w-xs gap-4 px-2 py-2 text-gray-400 bg-white border border-gray-300 rounded-lg hover:border-gray-200 bg-opacity-80 dark:border-0 dark:border-t dark:bg-gray-800 dark:bg-opacity-50 dark:border-t-gray-700"
+					class="flex w-full max-w-[18rem] gap-4 px-2 py-2 text-gray-400 bg-white border border-gray-300 rounded-lg hover:border-gray-200 bg-opacity-80 dark:border-0 dark:border-t dark:bg-gray-800 dark:bg-opacity-50 dark:border-t-gray-700"
 					on:click={dialogsearch.open}
 				>
 					<svg

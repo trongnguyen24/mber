@@ -109,26 +109,12 @@
 			"dev": "ccmariners-dev.tpfonline.com.au",
 			"id": "ntdsscdsk0m1bm5",
 			"live": "ccmariners.mberplus.com.au",
-			"name": "",
+			"name": "Central Coast Mariners",
 			"shortname": "CCM",
 			"test": "ccmariners-test.tpfonline.com.au",
 			"thumbnail": "bulldogs_7YG0YDXGdy.png",
 			"uat": "ccmariners-uat.mberplus.com.au",
 			"updated": "2023-03-17 08:56:26.971Z"
-		},
-		{
-			"collectionId": "tvi7fuufximvbbo",
-			"collectionName": "club",
-			"created": "2023-03-17 08:57:12.783Z",
-			"dev": "ccmariners-dev.tpfonline.com.au",
-			"id": "n3bykssw6hacnbd",
-			"live": "ccmariners.mberplus.com.au",
-			"name": "",
-			"shortname": "CCM",
-			"test": "ccmariners-test.tpfonline.com.au",
-			"thumbnail": "melbourne_rebels_pLnERv4z1V.png",
-			"uat": "ccmariners-uat.mberplus.com.au",
-			"updated": "2023-03-17 08:57:12.783Z"
 		},
 		{
 			"collectionId": "tvi7fuufximvbbo",
