@@ -15,7 +15,7 @@
 <header class="relative z-20">
 	<nav
 		class="fixed w-full transition-colors duration-300 {scrolly > 40
-			? 'backdrop-blur-lg border-b bg-white/90 border-b-slate-500/10 dark:bg-zinc-900/90'
+			? 'backdrop-blur-xl border-b bg-white/70 border-b-slate-500/10 dark:bg-zinc-900/70'
 			: 'backdrop-blur-none border-b bg-white/30 border-b-slate-500/10 dark:bg-zinc-900/20'}
 			"
 	>
