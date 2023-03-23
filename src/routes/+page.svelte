@@ -3,9 +3,10 @@
 	import Transition from 'svelte-transition';
 	import { scale } from 'svelte/transition';
 	import { browser } from '$app/environment';
-	import { onDestroy } from 'svelte';
 	import { Cardclub } from '$lib/components';
 	import { clubs, club2s } from '$lib/Store.js';
+	import { onDestroy } from 'svelte';
+	import { createSearchStore } from '$lib/Search.js';
 
 	let clubscache;
 	let clubscache2;
@@ -33,6 +34,21 @@
 		console.log('select', (e as CustomEvent).detail);
 	}
 
+	const searchProducts = clubscache.map((clubscache) => ({
+		...clubscache,
+		searchTerms: `${clubscache.name} ${clubscache.dev}`
+	}));
+
+	const searchStore = createSearchStore(searchProducts);
+
+	// const unsubscribe = searchStore.subscribe((model) => searchHandler(model));
+
+	// onDestroy(() => {
+	// 	unsubscribe();
+	// });
+
+	console.log('se', searchStore);
+
 	if (browser) {
 		if (localStorage.sortname == 1) {
 			setname();
@@ -50,6 +66,9 @@
 <section class="container max-w-screen-2xl pt-28">
 	<div class="flex justify-between">
 		<h1 class="text-2xl font-bold text-gray-700 dark:text-gray-300">Mber+® sites url</h1>
+		<input type="search" placeholder="Search..." bind:value={$searchStore.search} />
+		<pre>{JSON.stringify($searchStore.filtered, null, 2)}</pre>
+
 		<div class="relative z-10 inline-block">
 			<button
 				use:sortmenu.button
