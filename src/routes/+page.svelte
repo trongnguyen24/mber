@@ -3,7 +3,7 @@
 	import Transition from 'svelte-transition';
 	import { scale } from 'svelte/transition';
 	import { browser } from '$app/environment';
-
+	import { onDestroy } from 'svelte';
 	import { Cardclub } from '$lib/components';
 	import { clubs, club2s } from '$lib/Store.js';
 

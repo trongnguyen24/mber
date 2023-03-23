@@ -1,7 +1,5 @@
 <script>
-	import { enhance } from '$app/forms';
 	import { getImageURL } from '$lib/utils';
-	import Transition from 'svelte-transition';
 	export let club;
 </script>
 
@@ -26,38 +24,47 @@
 			{club.name}
 		</h2>
 		<div class="flex flex-col gap-2">
-			<div
-				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-sky-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
-			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Dev</div>
-				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{club.dev}
+			<a rel="noreferrer" target="_blank" href="https://{club.dev}/page">
+				<div
+					class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-sky-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				>
+					<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Dev</div>
+
+					<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
+						{club.dev}
+					</div>
 				</div>
-			</div>
-			<div
-				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x divide-purple-500 rounded font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
-			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Test</div>
-				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{club.test}
+			</a>
+			<a rel="noreferrer" target="_blank" href="https://{club.test}/page">
+				<div
+					class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x divide-purple-500 rounded font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				>
+					<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Test</div>
+					<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
+						{club.test}
+					</div>
 				</div>
-			</div>
-			<div
-				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-emerald-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
-			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Uat</div>
-				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{club.uat}
+			</a>
+			<a rel="noreferrer" target="_blank" href="https://{club.uat}/page">
+				<div
+					class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-emerald-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				>
+					<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Uat</div>
+					<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
+						{club.uat}
+					</div>
 				</div>
-			</div>
-			<div
-				class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-lime-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
-			>
-				<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Live</div>
-				<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
-					{club.live}
+			</a>
+			<a rel="noreferrer" target="_blank" href="https://{club.live}/page">
+				<div
+					class="flex items-center h-6 overflow-hidden text-xs transition-all border divide-x rounded divide-lime-500 font-code border-slate-200 dark:hover:border-slate-600 hover:border-slate-400 dark:border-gray-800"
+				>
+					<div class="w-10 pl-2 text-slate-700 shrink-0 dark:text-slate-100 select-none">Live</div>
+					<div class="h-6 max-w-full pl-2 leading-6 whitespace-nowrap text-slate-400">
+						{club.live}
+					</div>
 				</div>
-			</div>
+			</a>
 		</div>
 	</div>
 </article>
