@@ -4,24 +4,40 @@
 	import Theme from '$lib/components/Theme.svelte';
 	import { createDialog } from 'svelte-headlessui';
 	import Transition from 'svelte-transition';
+	import { clubs } from '$lib/Store.js';
 
+	let datasearch;
+
+	let searchTerm = '';
+	let filteredBooks = [];
+
+	clubs.subscribe((dataclub) => {
+		datasearch = dataclub;
+	});
+
+	const searchProducts = datasearch.map((datasearch) => ({
+		...datasearch,
+		searchTerms: `${datasearch.name} ${datasearch.shortname}`
+	}));
+
+	const searchBooks = () => {
+		return (filteredBooks = searchProducts.filter((searchProducts) => {
+			let datasearchTitle = searchProducts.searchTerms.toLowerCase();
+			return datasearchTitle.includes(searchTerm.toLowerCase());
+			console.log(searchBooks);
+		}));
+	};
+
+	// console.log(searchProducts);
 	let scrolly;
 
 	const dialogmenu = createDialog({ label: 'Menu' });
 	const dialogsearch = createDialog({ label: 'Search' });
 
-	// prettier-ignore
-	const people = [
-		{ name: 'Wade Cooper' },
-		{ name: 'Arlene Mccoy' },
-		{ name: 'Devon Webb' },
-		{ name: 'Tom Cook' },
-		{ name: 'Tanya Fox' },
-		{ name: 'Hellen Schmidt' },
-	]
-
-	let searchTerm = '';
-	let filteredItems = people;
+	// const searchProducts = clubscache.map((clubscache) => ({
+	// 	...clubscache,
+	// 	searchTerms: `${clubscache.name} ${clubscache.shortname}`
+	// }));
 </script>
 
 <svelte:window bind:scrollY={scrolly} />
@@ -276,7 +292,7 @@
 			</Transition>
 
 			<div class="fixed inset-0 overflow-y-auto">
-				<div class="flex min-h-full items-center justify-center p-4 text-center">
+				<div class="flex items-center justify-center min-h-full p-4 text-center">
 					<Transition
 						enter="ease-out duration-300"
 						enterFrom="opacity-0 scale-95"
@@ -286,90 +302,51 @@
 						leaveTo="opacity-0 scale-95"
 					>
 						<div
-							class="w-full max-w-3xl p-6 overflow-hidden align-middle transition-all transform border-t rounded-lg shadow-xl text-slate-600 dark:text-slate-300 bg-slate-100 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
+							class="w-full max-w-xl overflow-hidden align-middle transition-all transform border-t rounded-lg shadow-xl h-screen max-h-[28rem] text-slate-600 dark:text-slate-300 bg-slate-100 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
 							use:dialogsearch.modal
 						>
-							<div class="mt-4">
-								<button
-									type="button"
-									class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-									on:click={dialogsearch.close}
-								>
-									Got it, thanks!
-								</button>
+							<label for="searchbox" class="absolute top-6 left-6">
+								<span>
+									<svg
+										class="stroke-slate-400 dark:stroke-slate-500"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M20.0001 20L15.803 15.803M15.803 15.803C17.2096 14.3964 17.9998 12.4887 17.9998 10.4995C17.9998 8.51029 17.2096 6.60256 15.803 5.19599C14.3965 3.78941 12.4887 2.99921 10.4995 2.99921C8.51035 2.99921 6.60262 3.78941 5.19605 5.19599C3.78947 6.60256 2.99927 8.51029 2.99927 10.4995C2.99927 12.4887 3.78947 14.3964 5.19605 15.803C6.60262 17.2096 8.51035 17.9998 10.4995 17.9998C12.4887 17.9998 14.3965 17.2096 15.803 15.803Z"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+							</label>
+							<input
+								id="searchbox"
+								class="w-full py-6 pl-16 m-0 bg-transparent border-b outline-0 border-b-slate-300"
+								placeholder="Search project..."
+								bind:value={searchTerm}
+								on:input={searchBooks}
+							/>
+							<div class="flex flex-col divide-y divide-slate-200">
+								{#each filteredBooks as results}
+									<div class="flex p-6">{results.name}</div>
+								{/each}
 							</div>
+							<button
+								type="button"
+								class="px-1 py-0.5 outline outline-1 outline-slate-300 bg-slate-50 absolute right-6 top-[26px] text-xs font-code rounded"
+								on:click={dialogsearch.close}
+							>
+								ESC
+							</button>
 						</div>
 					</Transition>
 				</div>
 			</div>
 		</Transition>
-
-		<!-- <Transition show={$dialogsearch.expanded}>
-			<Transition
-				enter="ease-out duration-300"
-				enterFrom="opacity-0"
-				enterTo="opacity-100"
-				leave="ease-in duration-200"
-				leaveFrom="opacity-100"
-				leaveTo="opacity-0"
-			>
-				<div class="fixed inset-0 bg-black bg-opacity-25" on:click={dialogsearch.close} />
-			</Transition>
-
-			<div class="fixed inset-0 overflow-y-auto">
-				<div class="flex min-h-full items-center justify-center p-4 text-center">
-					<Transition
-						enter="ease-out duration-300"
-						enterFrom="opacity-0 scale-95"
-						enterTo="opacity-100 scale-100"
-						leave="ease-in duration-200"
-						leaveFrom="opacity-100 scale-100"
-						leaveTo="opacity-0 scale-95"
-					>
-						<div
-							class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
-							use:dialog.modal
-						>
-							<h3 class="text-lg font-medium leading-6 text-gray-900">Payment successful</h3>
-							<div class="mt-2">
-								<p class="text-sm text-gray-500">
-									Your payment has been successfully submitted. We’ve sent you an email with all of
-									the details of your order.
-								</p>
-							</div>
-
-							<div class="mt-4">
-								<button
-									type="button"
-									class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-									on:click={dialogsearch.close}
-								>
-									Got it, thanks!
-								</button>
-							</div>
-						</div>
-					</Transition>
-				</div>
-			</div>
-		</Transition> -->
 	</div>
-	<!-- <nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav> -->
 </header>
