@@ -19,17 +19,17 @@
 		<div class="w-[106.25rem] flex-none justify-center">
 			<picture class="hidden dark:block">
 				<source srcset={beam} type="image/webp" />
-				<img src={beam_fallback} alt="BG" loading="lazy" />
+				<img src={beam_fallback} alt="BG" />
 			</picture>
 
 			<picture class="block dark:hidden">
 				<source srcset={beam_light} type="image/webp" />
-				<img src={beam_light_fallback} alt="BG" loading="lazy" />
+				<img src={beam_light_fallback} alt="BG" />
 			</picture>
 		</div>
 	</div>
 
-	<main class="w-full grow mx-auto z-10">
+	<main class="w-full grow mx-auto z-10 pt-28">
 		<PageTransition pathname={data.pathname}>
 			<slot />
 		</PageTransition>

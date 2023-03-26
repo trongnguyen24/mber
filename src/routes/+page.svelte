@@ -63,7 +63,7 @@
 	<meta name="description" content="" />
 </svelte:head>
 
-<section class="container max-w-screen-2xl pt-28">
+<section class="container max-w-screen-2xl">
 	<div class="flex justify-between">
 		<h1 class="text-2xl font-bold text-gray-700 dark:text-gray-300">Mber+® sites url</h1>
 		<!-- <div>

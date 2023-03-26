@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Menu from '$lib/components/Menu.svelte';
 	import { onMount } from 'svelte';
+	import { getImageURL } from '$lib/utils';
 	import Theme from '$lib/components/Theme.svelte';
 	import { createDialog } from 'svelte-headlessui';
 	import Transition from 'svelte-transition';
@@ -24,10 +25,9 @@
 		return (filteredBooks = searchProducts.filter((searchProducts) => {
 			let datasearchTitle = searchProducts.searchTerms.toLowerCase();
 			return datasearchTitle.includes(searchTerm.toLowerCase());
-			console.log(searchBooks);
 		}));
 	};
-
+	searchBooks();
 	// console.log(searchProducts);
 	let scrolly;
 
@@ -285,6 +285,7 @@
 				leaveFrom="opacity-100"
 				leaveTo="opacity-0"
 			>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					class="fixed inset-0 bg-opacity-50 bg-zinc-900 backdrop-blur-sm"
 					on:click={dialogsearch.close}
@@ -326,19 +327,79 @@
 							</label>
 							<input
 								id="searchbox"
-								class="w-full py-6 pl-16 m-0 bg-transparent border-b outline-0 border-b-slate-300"
+								autocomplete="off"
+								class="w-full py-6 pl-16 m-0 bg-transparent border-b outline-0 dark:border-b-slate-700 border-b-slate-300 border-opacity-60 dark:border-opacity-50"
 								placeholder="Search project..."
 								bind:value={searchTerm}
 								on:input={searchBooks}
 							/>
-							<div class="flex flex-col divide-y divide-slate-200">
+							<div
+								class="flex flex-col divide-y divide-slate-200 dark:divide-slate-700 dark:divide-opacity-50"
+							>
 								{#each filteredBooks as results}
-									<div class="flex p-6">{results.name}</div>
+									<div
+										class="flex group p-6 items-center transition-colors duration-150 justify-between dark:hover:bg-slate-700 dark:hover:bg-opacity-30 hover:bg-slate-200 hover:bg-opacity-50"
+									>
+										<div class="flex gap-4">
+											<picture class="w-6 h-6">
+												<img
+													src={results?.thumbnail
+														? getImageURL(
+																results.collectionId,
+																results.id,
+																results.thumbnail,
+																'100x100'
+														  )
+														: `https://via.placeholder.com/80/4506CB/FFFFFF/?text=${results.name}`}
+													alt="club thumbnail"
+													loading="lazy"
+													width="24"
+													height="24"
+												/>
+											</picture>
+											{results.name}
+										</div>
+										<div class="flex gap-2 font-code text-center text-xs">
+											<a rel="noreferrer" target="_blank" href="https://{results.dev}/page"
+												><div
+													class="border py-0.5 w-10 rounded bg-slate-50 text-slate-400 border-slate-300 dark:border-slate-600 dark:bg-slate-700 group-hover:border-sky-500 group-hover:text-slate-500 group-hover:bg-white dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:group-hover:bg-slate-700 dark:group-hover:text-slate-300 transition-colors duration-150"
+												>
+													Dev
+												</div></a
+											>
+											<a rel="noreferrer" target="_blank" href="https://{results.test}/page"
+												><div
+													class="border py-0.5 px-1 w-10 rounded bg-slate-50 text-slate-400 border-slate-300 dark:border-slate-600 dark:bg-slate-700  group-hover:border-purple-500 group-hover:text-slate-500 group-hover:bg-white dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:group-hover:bg-slate-700 dark:group-hover:text-slate-300 transition-colors duration-150"
+												>
+													Test
+												</div></a
+											>
+											<a rel="noreferrer" target="_blank" href="https://{results.uat}/page"
+												><div
+													class="border py-0.5 px-1 w-10 rounded bg-slate-50 text-slate-400 border-slate-300 dark:border-slate-600 dark:bg-slate-700  group-hover:border-emerald-500 group-hover:text-slate-500 group-hover:bg-white dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:group-hover:bg-slate-700 dark:group-hover:text-slate-300 transition-colors duration-150"
+												>
+													Uat
+												</div></a
+											>
+											<a rel="noreferrer" target="_blank" href="https://{results.live}/page"
+												><div
+													class="border py-0.5 px-1 w-10 rounded bg-slate-50 text-slate-400 border-slate-300 dark:border-slate-600 dark:bg-slate-700  group-hover:border-lime-500 group-hover:text-slate-500 group-hover:bg-white dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:group-hover:bg-slate-700 dark:group-hover:text-slate-300 transition-colors duration-150"
+												>
+													Live
+												</div></a
+											>
+										</div>
+									</div>
 								{/each}
+								{#if Object.keys(filteredBooks).length === 0}
+									<div class="p-6 text-center">
+										No results for "<span class=" font-semibold">{searchTerm}</span>"
+									</div>
+								{/if}
 							</div>
 							<button
 								type="button"
-								class="px-1 py-0.5 outline outline-1 outline-slate-300 bg-slate-50 absolute right-6 top-[26px] text-xs font-code rounded"
+								class="px-1 py-0.5 outline outline-1 outline-slate-300 bg-slate-50 absolute right-6 top-[26px] text-xs font-code rounded dark:bg-slate-600 dark:outline-slate-500"
 								on:click={dialogsearch.close}
 							>
 								ESC
