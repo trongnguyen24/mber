@@ -9,11 +9,11 @@
 </script>
 
 <div class="form-control w-full max-w-lg my-2">
-	<label for={id} class="label font-medium pb-1">
-		<span class="label-text">{label}</span>
+	<label for={id} class="block text-sm font-semibold leading-6 text-gray-700 dark:text-slate-200">
+		<span class="">{label}</span>
 	</label>
 	<input
-		class="input input-bordered w-full max-w-lg"
+		class="mt-2 appearance-none text-slate-800 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none dark:bg-gray-800 dark:ring-gray-700 dark:focus:ring-gray-600 placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
 		{type}
 		{placeholder}
 		{required}

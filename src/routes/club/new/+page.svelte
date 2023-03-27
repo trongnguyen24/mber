@@ -3,36 +3,49 @@
 	import { Input } from '$lib/components';
 </script>
 
-<div class="flex flex-col w-full h-full p-2 mt-36">
+<div class="flex flex-col items-center h-full w-full">
 	<div class="w-full">
 		<form
 			action="?/create"
 			method="POST"
-			class="flex flex-col space-y-2 w-full items-center"
+			class="w-full max-w-sm mx-auto"
 			enctype="multipart/form-data"
 			use:enhance
 		>
-			<h3 class="text-3xl font-bold">Tell us more about this project</h3>
-			<p class="mt-2 text-lg">We'll need the name, tagline, link, and description</p>
+			<h2 class="mb-12 text-center text-3xl font-bold text-slate-800 dark:text-slate-50">
+				About this project
+			</h2>
 			<Input id="name" label="Club name" />
 			<Input id="shortname" label="Short name" />
-			<Input id="dev" label="Dev URL" />
-			<Input id="test" label="Test URL" />
-			<Input id="uat" label="UAT URL" />
-			<Input id="live" label="Live URL" />
+			<Input id="dev" label="Dev" />
+			<Input id="test" label="Test" />
+			<Input id="uat" label="UAT" />
+			<Input id="live" label="Live" />
 			<div class="form-control w-full max-w-lg">
-				<label for="thumbnail" class="label font-medium pb-1">
-					<span class="label-text">Thumbnail</span>
+				<label
+					for="thumbnail"
+					class="block text-sm mb-2 font-semibold leading-6 text-gray-700 dark:text-slate-200"
+				>
+					<span class="">Thumbnail</span>
 				</label>
 				<input
 					type="file"
 					name="thumbnail"
 					id="thumbnail"
-					class="file-input file-input-bordered w-full max-w-lg"
+					class="block w-full text-sm text-slate-600
+					file:mr-4 file:py-2 file:px-4
+					file:rounded file:border-0
+					file:text-sm file:font-semibold
+					file:bg-sky-100 file:text-sky-600
+					hover:file:bg-sky-200"
 				/>
 			</div>
-			<div class="w-full max-w-lg pt-3">
-				<button type="submit" class="btn btn-primary w-full max-w-lg">Create Project</button>
+			<div class="w-full max-w-lg pt-6">
+				<button
+					type="submit"
+					class="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-slate-800 text-white hover:bg-slate-700 w-full dark:bg-lime-600 dark:border dark:border-lime-500 dark:hover:bg-lime-500 transition-colors duration-150"
+					>Create Project</button
+				>
 			</div>
 		</form>
 	</div>
