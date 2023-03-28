@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Header from './Header.svelte';
 	import '../app.css';
 	import beam from '$lib/images/beam.webp';
@@ -7,7 +7,8 @@
 	import beam_light_fallback from '$lib/images/beam-light.png';
 	import PageTransition from '$lib/components/PageTransition.svelte';
 	/** @type {import('./$types').LayoutData} */
-	export let data;
+	import type { LayoutServerData } from './$types';
+	export let data: LayoutServerData;
 </script>
 
 <Header />
