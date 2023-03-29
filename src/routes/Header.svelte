@@ -5,9 +5,19 @@
 	import { createDialog } from 'svelte-headlessui';
 	import Transition from 'svelte-transition';
 	import { clubs } from '$lib/Store.js';
-	export let data;
 
-	console.log(data);
+	const load = ({ locals }) => {
+		if (locals.user) {
+			return {
+				user: locals.user
+			};
+		}
+
+		return {
+			user: undefined
+		};
+	};
+
 	let datasearch;
 
 	let searchTerm = '';
@@ -219,7 +229,7 @@
 				<Menu />
 				<span class="pl-8 gap-8 flex">
 					<Theme />
-					{#if data}
+					<!-- {#if !data}
 						<a href="/login">
 							<svg
 								width="24"
@@ -239,7 +249,7 @@
 						</a>
 					{:else}
 						Login
-					{/if}
+					{/if} -->
 				</span>
 			</div>
 		</div>
