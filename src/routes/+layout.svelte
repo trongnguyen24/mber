@@ -30,7 +30,7 @@
 		</div>
 	</div>
 
-	<main class="w-full grow mx-auto z-10 pt-28">
+	<main class="w-full grow mx-auto z-10 py-28">
 		<PageTransition pathname={data.pathname}>
 			<slot />
 		</PageTransition>

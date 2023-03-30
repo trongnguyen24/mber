@@ -17,7 +17,7 @@
 			<input
 				type="email"
 				name="email"
-				class="mt-2 appearance-none text-slate-800 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none dark:bg-gray-800 dark:ring-gray-700 dark:focus:ring-gray-600 placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+				class="mt-2 appearance-none text-slate-800 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none dark:bg-gray-800 dark:bg-opacity-30 dark:text-slate-400 dark:ring-gray-700 dark:focus:ring-gray-600 placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
 			/>
 		</div>
 		<div class="mb-6">
@@ -30,7 +30,7 @@
 			<input
 				type="password"
 				name="password"
-				class="mt-2 appearance-none text-slate-800 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none dark:bg-gray-800 dark:ring-gray-700 dark:focus:ring-gray-600 placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+				class="mt-2 appearance-none text-slate-800 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none dark:bg-gray-800 dark:bg-opacity-30 dark:text-slate-400 dark:ring-gray-700 dark:focus:ring-gray-600 placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
 			/>
 		</div>
 

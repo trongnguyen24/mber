@@ -1,5 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
 	import { Input } from '$lib/components';
 </script>
 
@@ -10,7 +9,6 @@
 			method="POST"
 			class="w-full max-w-sm mx-auto"
 			enctype="multipart/form-data"
-			use:enhance
 		>
 			<h2 class="mb-12 text-center text-3xl font-bold text-slate-800 dark:text-slate-50">
 				About this project

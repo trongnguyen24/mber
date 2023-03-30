@@ -5,6 +5,9 @@
 	import { browser } from '$app/environment';
 	import { Cardclub } from '$lib/components';
 	import { clubs, club2s } from '$lib/Store.js';
+	import { page } from '$app/stores';
+
+	console.log($page.url.search);
 
 	let clubscache;
 	let clubscache2;
@@ -55,6 +58,15 @@
 		} else {
 			setnew();
 		}
+		if ($page.url.search == '?update') {
+			clubs.subscribe((dataclub) => {
+				clubscache = dataclub;
+			});
+
+			club2s.subscribe((dataclub2) => {
+				clubscache2 = dataclub2;
+			});
+		}
 	}
 </script>
 
@@ -65,10 +77,11 @@
 
 <section class="container max-w-screen-2xl">
 	<div class="flex justify-between">
-		<h1 class="text-2xl font-bold text-gray-700 dark:text-gray-300">Mber+® sites url</h1>
-		<!-- <div>
-			<input class="p-2" type="search" placeholder="Search..." />
-		</div> -->
+		<h1 class="text-2xl font-bold text-gray-700 dark:text-gray-300 flex">
+			Mber+® sites url <span class="w-4 ml-4 block overflow-hidden"
+				><a href="club/new">+New</a></span
+			>
+		</h1>
 
 		<div class="relative z-10 inline-block">
 			<button
@@ -133,7 +146,7 @@
 			<main
 				in:scale={{ duration: 700, delay: 200, opacity: 0, start: 0.97 }}
 				out:scale={{ duration: 250, delay: 0, opacity: 0, start: 1.01 }}
-				class="grid absolute w-full gap-10 my-11 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))]"
+				class="grid absolute w-full gap-10 pt-11 pb-40 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))]"
 			>
 				{#each clubscache as club}
 					<Cardclub {club} />
@@ -144,7 +157,7 @@
 			<main
 				in:scale={{ duration: 700, delay: 200, opacity: 0, start: 0.97 }}
 				out:scale={{ duration: 250, delay: 0, opacity: 0, start: 1.01 }}
-				class="grid absolute w-full gap-10 my-11 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))]"
+				class="grid absolute w-full gap-10 pt-11 pb-40 grid-cols-[repeat(auto-fit,minmax(280px,_1fr))]"
 			>
 				{#each clubscache2 as club}
 					<Cardclub {club} />

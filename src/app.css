@@ -6,6 +6,11 @@
 	html {
 		font-family: Inter, sans-serif;
 		scroll-behavior: smooth;
+		overflow: -moz-scrollbars-vertical;
+		overflow-y: scroll;
+	}
+	.dark {
+		color-scheme: dark;
 	}
 }
 
