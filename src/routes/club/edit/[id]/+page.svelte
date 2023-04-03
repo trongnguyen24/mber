@@ -3,6 +3,11 @@
 	import { Input } from '$lib/components';
 	import { getImageURL } from '$lib/utils';
 	import { page } from '$app/stores';
+	import { createDialog } from 'svelte-headlessui';
+	import Transition from 'svelte-transition';
+
+	const dialogdel = createDialog({ label: 'Del' });
+
 	let idclub = $page.params.id;
 
 	const fetchdata = (async () => {
@@ -74,7 +79,26 @@
 				<Input id="uat" label="UAT" value={club.uat ?? ''} />
 				<Input id="live" label="Live" value={club.live ?? ''} />
 
-				<div class="w-full max-w-lg pt-6">
+				<div class="w-full flex max-w-lg gap-6 pt-6">
+					<button
+						type="button"
+						on:click={dialogdel.open}
+						class="inline-flex w-12 justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-red-500 text-white hover:bg-red-400 dark:bg-red-600 dark:border dark:border-red-500 dark:hover:bg-red-500 transition-colors duration-150"
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6 stroke-white dark:stroke-white"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+							/>
+						</svg>
+					</button>
 					<button
 						type="submit"
 						class="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-slate-800 text-white hover:bg-slate-700 w-full dark:bg-lime-600 dark:border dark:border-lime-500 dark:hover:bg-lime-500 transition-colors duration-150"
@@ -86,4 +110,55 @@
 			<p>An error occurred!</p>
 		{/await}
 	</div>
+</div>
+
+<div class="relative z-60">
+	<Transition show={$dialogdel.expanded}>
+		<Transition
+			enter="ease-out duration-300"
+			enterFrom="opacity-0"
+			enterTo="opacity-100"
+			leave="ease-in duration-200"
+			leaveFrom="opacity-100"
+			leaveTo="opacity-0"
+		>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div
+				class="fixed inset-0 bg-opacity-0 bg-zinc-900 backdrop-blur-lg"
+				on:click={dialogdel.close}
+			/>
+		</Transition>
+
+		<div class="fixed inset-0 overflow-y-auto">
+			<div class="flex items-center justify-center min-h-full p-4 text-center">
+				<Transition
+					enter="ease-out duration-300"
+					enterFrom="opacity-0 scale-95"
+					enterTo="opacity-100 scale-100"
+					leave="ease-in duration-200"
+					leaveFrom="opacity-100 scale-100"
+					leaveTo="opacity-0 scale-95"
+				>
+					<div
+						class="w-full max-w-xl overflow-hidden align-middle transition-all transform border-t rounded-lg shadow-xl h-screen max-h-[28rem] text-slate-600 dark:text-slate-300 bg-slate-100 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
+						use:dialogdel.modal
+					>
+						<div
+							class="flex flex-col divide-y divide-slate-200 dark:divide-slate-700 dark:divide-opacity-50"
+						>
+							Are you sure you want to delete this project? Once deleted, the project cannot be
+							restored.
+						</div>
+						<button
+							type="button"
+							class="px-1 py-0.5 outline outline-1 outline-slate-300 bg-slate-50 absolute right-6 top-[26px] text-xs font-code rounded dark:bg-slate-600 dark:outline-slate-500"
+							on:click={dialogdel.close}
+						>
+							Close
+						</button>
+					</div>
+				</Transition>
+			</div>
+		</div>
+	</Transition>
 </div>

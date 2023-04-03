@@ -1,4 +1,5 @@
 import { redirect } from '@sveltejs/kit';
+import { page } from '$app/stores';
 
 export const load = ({ locals }) => {
 	if (!locals.pb.authStore.isValid) {
@@ -24,7 +25,22 @@ export const actions = {
 		}
 
 		throw redirect(303, `/?update`);
+	},
+
+	deleteProject: async ({ request, locals }) => {
+		const { id } = Object.fromEntries(await request.formData());
+
+		try {
+			await locals.pb.collection('projects').delete(id);
+		} catch (err) {
+			console.log('Error: ', err);
+			throw error(err.status, err.message);
+		}
+		return {
+			success: true
+		};
 	}
+
 	// deleteThumbnail: async ({ locals, params }) => {
 	// 	try {
 	// 		await locals.pb.collection('projects').update(params.projectId, { thumbnail: null });
