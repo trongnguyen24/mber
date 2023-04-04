@@ -4,7 +4,7 @@
 	import Theme from '$lib/components/Theme.svelte';
 	import { createDialog } from 'svelte-headlessui';
 	import Transition from 'svelte-transition';
-	import { clubs } from '$lib/Store.js';
+	import { club2s } from '$lib/Store.js';
 
 	const load = ({ locals }) => {
 		if (locals.user) {
@@ -23,7 +23,7 @@
 	let searchTerm = '';
 	let filteredBooks = [];
 
-	clubs.subscribe((dataclub) => {
+	club2s.subscribe((dataclub) => {
 		datasearch = dataclub;
 	});
 
@@ -330,7 +330,7 @@
 						leaveTo="opacity-0 scale-95"
 					>
 						<div
-							class="w-full max-w-xl overflow-hidden align-middle transition-all transform border-t rounded-lg shadow-xl h-screen max-h-[28rem] text-slate-600 dark:text-slate-300 bg-slate-100 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
+							class="w-full flex flex-col max-w-xl overflow-hidden align-middle transition-all transform border-t rounded-lg shadow-xl h-screen max-h-[37rem] text-slate-600 dark:text-slate-300 bg-slate-100 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
 							use:dialogsearch.modal
 						>
 							<label for="searchbox" class="absolute top-6 left-6">
@@ -361,7 +361,7 @@
 								on:input={searchBooks}
 							/>
 							<div
-								class="flex flex-col divide-y divide-slate-200 dark:divide-slate-700 dark:divide-opacity-50"
+								class="flex overflow-y-auto flex-col divide-y divide-slate-200 dark:divide-slate-700 dark:divide-opacity-50"
 							>
 								{#each filteredBooks as results}
 									<div

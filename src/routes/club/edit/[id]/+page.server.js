@@ -31,14 +31,12 @@ export const actions = {
 		const { id } = Object.fromEntries(await request.formData());
 
 		try {
-			await locals.pb.collection('projects').delete(id);
+			await locals.pb.collection('club').delete(id);
 		} catch (err) {
 			console.log('Error: ', err);
 			throw error(err.status, err.message);
 		}
-		return {
-			success: true
-		};
+		throw redirect(303, `/?del`);
 	}
 
 	// deleteThumbnail: async ({ locals, params }) => {

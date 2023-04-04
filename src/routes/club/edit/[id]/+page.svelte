@@ -124,7 +124,7 @@
 		>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
-				class="fixed inset-0 bg-opacity-0 bg-zinc-900 backdrop-blur-lg"
+				class="fixed inset-0 bg-opacity-60 bg-zinc-50 backdrop-blur-sm"
 				on:click={dialogdel.close}
 			/>
 		</Transition>
@@ -140,22 +140,27 @@
 					leaveTo="opacity-0 scale-95"
 				>
 					<div
-						class="w-full max-w-xl overflow-hidden align-middle transition-all transform border-t rounded-lg shadow-xl h-screen max-h-[28rem] text-slate-600 dark:text-slate-300 bg-slate-100 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
+						class="w-full flex flex-col gap-8 p-12 max-w-xl overflow-hidden align-middle transition-all transform border-t rounded-lg shadow-xl text-slate-600 dark:text-slate-300 bg-slate-50 border-t-white dark:border-t-gray-700 dark:bg-gray-800"
 						use:dialogdel.modal
 					>
-						<div
-							class="flex flex-col divide-y divide-slate-200 dark:divide-slate-700 dark:divide-opacity-50"
-						>
-							Are you sure you want to delete this project? Once deleted, the project cannot be
-							restored.
+						<div class="flex flex-col">Are you sure you want to delete this project?</div>
+						<div class="flex gap-6">
+							<button
+								type="button"
+								class="rounded-lg text-sm font-semibold py-2.5 px-4 bg-slate-50 hover:bg-white w-full dark:bg-slate-800 border dark:border-slate-700 dark:hover:bg-slate-700 transition-colors duration-150"
+								on:click={dialogdel.close}
+							>
+								Close
+							</button>
+							<form class="w-full" action="?/deleteProject" method="POST">
+								<input type="hidden" name="id" value={idclub} />
+								<button
+									type="submit"
+									class="rounded-lg text-sm font-semibold text-white py-2.5 px-4 bg-red-500 hover:bg-red-400 w-full dark:bg-red-500 border dark:border-red-400 dark:hover:bg-red-400 transition-colors duration-150"
+									>Delete</button
+								>
+							</form>
 						</div>
-						<button
-							type="button"
-							class="px-1 py-0.5 outline outline-1 outline-slate-300 bg-slate-50 absolute right-6 top-[26px] text-xs font-code rounded dark:bg-slate-600 dark:outline-slate-500"
-							on:click={dialogdel.close}
-						>
-							Close
-						</button>
 					</div>
 				</Transition>
 			</div>
