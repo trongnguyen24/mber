@@ -11,7 +11,9 @@
 	let idclub = $page.params.id;
 
 	const fetchdata = (async () => {
-		const response = await fetch('http://127.0.0.1:8090/api/collections/club/records/' + idclub);
+		const response = await fetch(
+			'https://lazy-traffic.pockethost.io//api/collections/club/records/' + idclub
+		);
 		return await response.json();
 	})();
 

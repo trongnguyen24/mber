@@ -10,7 +10,7 @@
 
 	const fetchdata = (async () => {
 		const response = await fetch(
-			'http://127.0.0.1:8090/api/collections/brief/records?filter=(club~%277nldrfiragiimw4%27)&sort=-created'
+			'https://lazy-traffic.pockethost.io//api/collections/brief/records?filter=(club~%277nldrfiragiimw4%27)&sort=-created'
 		);
 		return await response.json();
 	})();
