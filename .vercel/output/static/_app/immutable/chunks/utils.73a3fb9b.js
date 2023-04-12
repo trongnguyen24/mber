@@ -1,0 +1,1 @@
+import{_ as e}from"./preload-helper.41c905a7.js";await e(()=>import("./__vite-browser-external.b25bb000.js"),[],import.meta.url);const _=(t,o,r,a="0x0")=>`https://lazy-traffic.pockethost.io//api/files/${t}/${o}/${r}?thumb=${a}`;export{_ as g};
