@@ -34,6 +34,7 @@
 	"dependencies": {
 		"@thoughtbot/tailwindcss-aria-attributes": "^0.2.0",
 		"overlayscrollbars": "^2.1.1",
+		"pnpm": "^8.2.0",
 		"pocketbase": "^0.8.0-rc4",
 		"svelte-headlessui": "^0.0.15",
 		"svelte-transition": "^0.0.7"
